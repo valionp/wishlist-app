@@ -1,0 +1,43 @@
+{% comment %}
+  Wishlist Button Snippet
+
+  Usage:
+  {% render 'wishlist-button', product: product %}
+
+  Required parameters:
+  - product: The product object
+
+  Optional parameters:
+  - button_class: Additional CSS classes for the button
+  - text_class: CSS classes for the button text
+  - icon_only: Set to true to show only the icon (defaults to false)
+{% endcomment %}
+
+{% if customer %}
+  <button
+    class="wishlist-button {% if button_class %}{{ button_class }}{% endif %}"
+    data-product-id="{{ product.id }}"
+    data-product-handle="{{ product.handle }}"
+    aria-label="{% if icon_only %}Toggle wishlist{% else %}Add to wishlist{% endif %}"
+  >
+    <span class="wishlist-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </span>
+    {% unless icon_only %}
+      <span class="wishlist-text {% if text_class %}{{ text_class }}{% endif %}">Add to Wishlist</span>
+    {% endunless %}
+  </button>
+{% else %}
+  <a href="/account/login" class="wishlist-login-link {% if button_class %}{{ button_class }}{% endif %}" aria-label="Log in to use wishlist">
+    <span class="wishlist-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </span>
+    {% unless icon_only %}
+      <span class="wishlist-text {% if text_class %}{{ text_class }}{% endif %}">Add to Wishlist</span>
+    {% endunless %}
+  </a>
+{% endif %}

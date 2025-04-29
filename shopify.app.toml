@@ -3,7 +3,7 @@
 client_id = "7113ffc39247734fe9095773de9c630b"
 name = "wishlist"
 handle = "wishlist-742"
-application_url = "https://recorders-apartment-andale-guided.trycloudflare.com"
+application_url = "https://abs-holdem-substances-male.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,13 +13,13 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_customers,read_products,write_customers,write_products"
 
 [auth]
 redirect_urls = [
-  "https://recorders-apartment-andale-guided.trycloudflare.com/auth/callback",
-  "https://recorders-apartment-andale-guided.trycloudflare.com/auth/shopify/callback",
-  "https://recorders-apartment-andale-guided.trycloudflare.com/api/auth/callback"
+  "https://abs-holdem-substances-male.trycloudflare.com/auth/callback",
+  "https://abs-holdem-substances-male.trycloudflare.com/auth/shopify/callback",
+  "https://abs-holdem-substances-male.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -32,6 +32,11 @@ api_version = "2025-04"
   [[webhooks.subscriptions]]
   topics = [ "app/uninstalled" ]
   uri = "/webhooks/app/uninstalled"
+
+[app_proxy]
+url = "https://abs-holdem-substances-male.trycloudflare.com"
+subpath = "wishlist"
+prefix = "apps"
 
 [pos]
 embedded = false

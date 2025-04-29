@@ -1,0 +1,55 @@
+{% comment %}
+  Wishlist Button Section
+
+  This section adds a wishlist button that can be added to product pages
+  or collection pages from the theme editor.
+{% endcomment %}
+
+<div class="wishlist-button-wrapper" style="{{ section.settings.custom_css }}">
+  {% render 'wishlist-button',
+    product: product,
+    button_class: section.settings.button_class,
+    text_class: section.settings.text_class,
+    icon_only: section.settings.icon_only
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "Wishlist Button",
+  "target": "section",
+  "javascript": "wishlist-app.js",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add a wishlist button to your product pages or collection templates."
+    },
+    {
+      "type": "checkbox",
+      "id": "icon_only",
+      "label": "Show icon only",
+      "default": false,
+      "info": "When enabled, only the heart icon will be displayed"
+    },
+    {
+      "type": "text",
+      "id": "button_class",
+      "label": "Button CSS classes",
+      "info": "Add custom CSS classes to the button"
+    },
+    {
+      "type": "text",
+      "id": "text_class",
+      "label": "Text CSS classes",
+      "info": "Add custom CSS classes to the button text"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS",
+      "info": "Add custom inline CSS for the button wrapper",
+      "placeholder": "margin: 10px 0; display: flex; justify-content: center;"
+    }
+  ]
+}
+{% endschema %}
